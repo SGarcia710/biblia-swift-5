@@ -111,7 +111,7 @@ mean(12, 12)
 mean(1, 2)
 mean(1.2, 3.4, 5.2)
 
-// Parametros de entrada y salida (inout) (Paso de variables por referencia)
+/* Parametros de entrada y salida (inout) (Paso de variables por referencia) */
 var x = 5
 
 func addOne(number: Int) {
@@ -133,3 +133,46 @@ var otherInt = 7
 print(someInt, otherInt)
 swap(&someInt, &otherInt)
 print(someInt, otherInt)
+
+/* Function Types */
+func addTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a + b
+} // (Int, Int) -> Int
+
+func minusTwoInts(_ a: Int, _ b: Int) -> Int {
+    return a - b
+} // (Int, Int) -> Int
+
+func printHelloWorld() {
+    print("Hello, World")
+} // () -> Void
+
+// Guardar una función en una variable
+var mathFunction : (Int, Int) -> Int = addTwoInts
+mathFunction(4,5)
+
+// Función que recibe una función como parámetro
+func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+    print("El resultado de la operación es: \(mathFunction(a, b))")
+}
+printMathResult(minusTwoInts, 12, 6)
+printMathResult(addTwoInts, 12, 12)
+
+// Funciones anidadas: Una función está anidada cuando está definida dentro de otra
+func chooseStepFunction(backward: Bool) -> (Int) -> Int { // Función que devuelve una función
+    func stepFoward(_ input: Int) -> Int { // Función anidada
+        return input + 1
+    }
+    func stepBackward(_ input: Int) -> Int { // Función anidada
+        return input - 1
+    }
+    return backward ? stepBackward : stepFoward
+}
+
+var value = -7
+let moveNearerZero = chooseStepFunction(backward: value > 0) // Esto tendrá como valor una función que acepta un entero y retorna un entero
+while value != 0 {
+    print("El valor actual es \(value).")
+    value = moveNearerZero(value) // Por eso aquí al llamar esa variable, le mando un parámetro
+}
+print("Cero!")
