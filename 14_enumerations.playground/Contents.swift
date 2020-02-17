@@ -2,19 +2,21 @@ import UIKit
 
 /* Enumerados o clases vagas (Enumerations): a diferencia de una clase que tiene propiedades, metodos, etc... Un enumerado simplemente tiene un valor posible dentro de un conjunto disponible. */
 
-enum SomeEnumerations {
+enum SomeEnumerations { // Si no le declaro un tipo a un enum, solo tendrán Hash Values sus cases.
     // Aquí iría la definición del enumerado
 }
+// Si solo se necesita el enumerado a modo de bifurcar caminos o generar estructuras de control, no es necesario darle un raw value.
 
-enum CompassPoint {
+// Si en algún punto de mi aplicación, el usuario ingresa un valor y a partir de ahí se desea elegir un enumerado, lo mejor es asignarle un valor a cada uno (Raw value)
+enum CompassPoint: String { // Si le pongo un tipo, este será su Raw Value. Y si no le doy un valor a cada case, tomará por defecto el nombre de los mismos.
     case north
     case south
     case east
     case west
 }
 
-enum Planet {
-    case mercury, venus, earth, mars, jupiter, saturn, uranus, neptune
+enum Planet: Int {
+    case mercury = 1, venus, earth, mars, jupiter, saturn, uranus, neptune
 }
 
 var directionToGo = CompassPoint.north
@@ -59,10 +61,29 @@ var productBarcode = Barcode.upc(12920, 41388, 91210, 3)
 productBarcode = .qrCode("ASDJKL")
 
 switch productBarcode {
-case .upc(let numberSystem, let manufacter, let product, let check):
-    print(numberSystem, manufacter, product, check)
-case .qrCode(let code):
-    print(code)
-default:
-    break;
+    case let .upc(numberSystem,  manufacter,  product,  check): // Si son muchas variables las que quiero guardar en el case, pongo el let después del case
+        print(numberSystem, manufacter, product, check)
+    case let .qrCode(code):
+        print(code)
+}
+
+/* Enumeradores con raw values */
+enum ASCIIControlCharacter: Character {
+    case tab = "\t"
+    case lineFeed = "\n"
+    case carriageReturn = "\r"
+}
+
+enum Familia: Int {
+    case father = 1, mother, son, daughter
+}
+
+let earthOrder = Planet.earth.rawValue
+let northDir = CompassPoint.north.rawValue
+
+let planetPosition = 5
+if let possiblePlanet = Planet(rawValue: planetPosition) { // Recordar hacer Safe casting para handlear posibles nil
+    print("El planeta es \(possiblePlanet).")
+} else {
+    print("No existe un planeta con el valor \(planetPosition).")
 }
