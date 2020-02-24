@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Timeline
+   version = "3.0">
+   <TimelineItems>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/sebastian/Desktop/repos/swift5_course/21_optional_chaining.playground#CharacterRangeLen=5&amp;CharacterRangeLoc=230&amp;EndingColumnNumber=10&amp;EndingLineNumber=16&amp;StartingColumnNumber=5&amp;StartingLineNumber=16&amp;Timestamp=604219721.07047"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/sebastian/Desktop/repos/swift5_course/21_optional_chaining.playground#CharacterRangeLen=5&amp;CharacterRangeLoc=650&amp;EndingColumnNumber=6&amp;EndingLineNumber=25&amp;StartingColumnNumber=1&amp;StartingLineNumber=25&amp;Timestamp=604219721.070747"
+         lockedSize = "{282, 128}"
+         selectedRepresentationIndex = "0"
+         shouldTrackSuperviewWidth = "NO">
+      </LoggerValueHistoryTimelineItem>
+   </TimelineItems>
+</Timeline>

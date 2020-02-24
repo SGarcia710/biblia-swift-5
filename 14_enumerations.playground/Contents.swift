@@ -87,3 +87,9 @@ if let possiblePlanet = Planet(rawValue: planetPosition) { // Recordar hacer Saf
 } else {
     print("No existe un planeta con el valor \(planetPosition).")
 }
+
+enum Coso {
+    case uno
+}
+Coso.uno.hashValue
+print()
